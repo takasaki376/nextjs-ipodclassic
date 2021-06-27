@@ -13,7 +13,13 @@ module.exports = {
     "next/core-web-vitals",
     "prettier",
   ],
+  parser: "@typescript-eslint/parser",
   parserOptions: {
+    ecmaVersion: 2021,
+    sourceType: "module",
+    ecmaFeatures: {
+      jsx: true,
+    },
     project: ["tsconfig.json"],
   },
   settings: { react: { version: "detect" } },
@@ -50,6 +56,7 @@ module.exports = {
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/consistent-type-imports": [
       "warn",
       { prefer: "type-imports" },
@@ -77,6 +84,7 @@ module.exports = {
         aspects: ["invalidHref", "preferButton"],
       },
     ],
+    "jsx-a11y/alt-text": "OFF",
     "tailwindcss/classnames-order": "warn",
     "tailwindcss/no-custom-classname": "warn",
     "tailwindcss/no-contradicting-classname": "error",

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "classcat": "^5.0.3",
+    "framer-motion": "^4.1.17",
     "next": "11.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2"
@@ -18,6 +19,7 @@
     "@jarrodldavis/eslint-plugin-tailwindcss": "^0.4.0",
     "@types/react": "17.0.11",
     "@typescript-eslint/eslint-plugin": "^4.28.0",
+    "@typescript-eslint/parser": "^4.28.0",
     "autoprefixer": "^10.2.6",
     "eslint": "7.29.0",
     "eslint-config-next": "11.0.1",

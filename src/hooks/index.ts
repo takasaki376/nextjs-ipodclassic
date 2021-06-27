@@ -1,1 +1,1 @@
-export const Index = "";
+export * from "./utils";

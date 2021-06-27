@@ -15,6 +15,7 @@ yarn add -D prettier
 yarn add -D eslint-config-prettier
 yarn add -D eslint-plugin-jsx-a11y
 yarn add -D @typescript-eslint/eslint-plugin
+yarn add -D @typescript-eslint/parser
 ```
 
 windows の場合は、
@@ -117,4 +118,10 @@ Hello Nextjs
 </div>
 ) }
 export default Home
+```
+
+## 追加インストール
+
+```
+yarn add framer-motion
 ```
