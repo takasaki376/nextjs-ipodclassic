@@ -1,34 +1,120 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 初期セットアップ
 
-## Getting Started
+## Next.js
 
-First, run the development server:
+```
+yarn create next-app . --typescript
+```
 
-```bash
-npm run dev
-# or
+## 必要 module のインストール
+
+```
+yarn add classcat
+yarn add -D eslint-plugin-simple-import-sort
+yarn add -D prettier
+yarn add -D eslint-config-prettier
+yarn add -D eslint-plugin-jsx-a11y
+yarn add -D @typescript-eslint/eslint-plugin
+```
+
+windows の場合は、
+
+```
+powershell -ExecutionPolicy RemoteSigned yarn xxx
+```
+
+と yarn の前に記述する。
+powershell の実行時に実行権限を付与するため。
+
+## src フォルダ作成
+
+```
+mkdir src
+mv styles ./src
+mv pages ./src
+cd src
+mkdir components
+mkdir animation
+mkdir hooks
+mkdir providers
+mkdir types
+mkdir utils
+```
+
+## ESlint 設定
+
+設定ファイルの名前変更　.eslintrc.js
+ファイルの先頭に`module.exports =`を追加
+
+## 開発サーバ起動
+
+```
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## tailwind css のインストール
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```
+yarn add -D tailwindcss@latest postcss@latest autoprefixer@latest
+yarn add -D eslint-plugin-tailwindcss
+yarn add -D @jarrodldavis/eslint-plugin-tailwindcss@latest
+yarn add -D prettier-plugin-tailwind
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.tsx`.
+## tailwind.config.js, postcss.config.js の生成
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```
+npx tailwindcss init -p
+```
 
-## Learn More
+## tailwind.config.js の purge 設定追加
 
-To learn more about Next.js, take a look at the following resources:
+purge に設定を追記
+指定した tsx ファイルの中身を tailwind から css に変換する設定を入れる
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`mode: 'jit',`を先頭に追加
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```
+module.exports = {
+  mode: 'jit',
+  purge: ["./src/**/**/*.{ts,tsx}"],
+  darkMode: false,
+  theme: {
+    extend: {},
+  },
+  variants: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
 
-## Deploy on Vercel
+## globals.css の編集
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+/styles/global.css を書き換える
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+## vs code のワークスペース設定
+
+validate チェック off
+
+## index.tsx の編集
+
+index.tsx を下記のとおりに置き換える。
+className でスタイルを当てていく
+元々あった Home.module.css は削除しておく
+
+```
+const Home: React.FC = () => {
+return (
+ <div className="flex flex-col items-center justify-center min-h-screen font-mono">
+Hello Nextjs
+</div>
+) }
+export default Home
+```
