@@ -111,13 +111,17 @@ className でスタイルを当てていく
 元々あった Home.module.css は削除しておく
 
 ```
-const Home: React.FC = () => {
-return (
- <div className="flex flex-col items-center justify-center min-h-screen font-mono">
-Hello Nextjs
-</div>
-) }
-export default Home
+import { VFC } from "react";
+
+const Home: VFC = () => {
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen font-mono">
+      Hello Nextjs
+    </div>
+  );
+};
+export default Home;
+
 ```
 
 ## 追加インストール
